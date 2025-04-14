@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import TextBlockImage from "@/components/TextBlockImage";
+import TextBlockImage from "@/components/common/TextBlockImage";
 
 const TextBlockIntroducingSafenet = () => {
   return (

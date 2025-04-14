@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import TextBlockIntroducingSafenet from "@/components/TextBlockIntroducingSafenet";
+import TextBlockImageSecurity from "@/components/TextBlockImageSecurity";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -12,6 +12,58 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const propsTextBlockImageSecurity = {
+  component: "Home/TextBlockImageSecurity",
+  caption: "Security",
+  variant: "image-text",
+  title:
+    "<i>Safe</i> Smart Accounts are the <b>most audited</b> and <b>battle-tested</b>",
+  text: "Since 2018, our smart contracts have passed the highest possible security standards in the industry including formal verification.",
+  items: [
+    {
+      image: {
+        src: "/images/certora-logo.png",
+        alt: "Certora",
+      },
+    },
+    {
+      image: {
+        src: "./images/Home/Security/runtime-verification-logo.png",
+        alt: "Runtime Verification",
+      },
+    },
+    // {
+    //   image: {
+    //     src: "images/Home/Security/openzeppelin-logo.png",
+    //     alt: "Open Zeppelin",
+    //   },
+    // },
+    // {
+    //   image: {
+    //     src: "images/Home/Security/ackee-logo.png",
+    //     alt: "Ackee",
+    //   },
+    // },
+  ],
+  // buttons: [
+  //   {
+  //     text: "View audits",
+  //     href: "https://www.notion.so/safe-global/Safe-Contract-Audits-f9757c9ffab24ffdac43221b9a970ebc",
+  //     variant: "button",
+  //   },
+  //   {
+  //     text: "Start bug hunting",
+  //     href: "https://docs.safe.global/advanced/smart-account-bug-bounty",
+  //     variant: "link",
+  //   },
+  // ],
+  image: {
+    src: "./images/safe-shield.png",
+    alt: "Safe Smart Account shield",
+  },
+  // mobileVariant: "image-text",
+};
 
 export default function Home() {
   return (
@@ -27,51 +79,9 @@ export default function Home() {
       >
         <main className={styles.main}>
           <TextBlockIntroducingSafenet />
+          {/* @ts-expect-error Server Component prop spreading is not supported */}
+          <TextBlockImageSecurity {...propsTextBlockImageSecurity} />
         </main>
-        <footer className={styles.footer}>
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
-            />
-            Learn
-          </a>
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/window.svg"
-              alt="Window icon"
-              width={16}
-              height={16}
-            />
-            Examples
-          </a>
-          <a
-            href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/globe.svg"
-              alt="Globe icon"
-              width={16}
-              height={16}
-            />
-            Go to nextjs.org →
-          </a>
-        </footer>
       </div>
     </>
   );
